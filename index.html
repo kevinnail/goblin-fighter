@@ -33,9 +33,45 @@
             <h3>Pick your battle!!</h3>
         </header>
         <main>
-            <section></section>
+            <section>
+                <div id="user-display">
+                    <div id="user-HP-div">
+                        <h3>Your HP</h3>
+                        <p id="user-HP"><span>10</span> HP</p>
+                    </div>
+                    <img id="robot-me" src="/assets/robots/robot-me.png" alt="" />
+                </div>
+                <h2 id="score-board">You have defeated <span id="score">?</span> robots!</h2>
+                <form id="add-robot-form">
+                    <input id="robot-input" required name="name" value="Name your opponent" />
+                    <button id="add-robot-button">Add Robot</button>
+                </form>
+                <button id="remove-robot-button">Remove defeated robots</button>
+            </section>
             <div></div>
-            <section></section>
+            <section id="robot-section">
+                <div class="robot-display">
+                    <img src="/assets/robots/robot-fox.png" alt="" />
+                    <div class="robots">
+                        <h3>HP</h3>
+                        <p id="robot-HP"><span>8</span> HP</p>
+                    </div>
+                </div>
+                <div class="robot-display">
+                    <img src="/assets/robots/robot-snake.png" alt="" />
+                    <div class="robots">
+                        <h3>HP</h3>
+                        <p id="robot-HP"><span>8</span> HP</p>
+                    </div>
+                </div>
+                <div class="robot-display">
+                    <img src="/assets/robots/robot-bird.png" alt="" />
+                    <div class="robots">
+                        <h3>HP</h3>
+                        <p id="robot-HP"><span>8</span> HP</p>
+                    </div>
+                </div>
+            </section>
         </main>
     </body>
 </html>
