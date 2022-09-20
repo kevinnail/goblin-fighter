@@ -140,3 +140,7 @@ h2 {
     font-size: 2em;
     color: white;
 }
+
+#current-msg {
+    height: 40px;
+}
