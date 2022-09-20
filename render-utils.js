@@ -5,6 +5,7 @@ export function renderRobot(robot) {
     const robotImg = document.createElement('img');
     robotImg.classList.add('robot-img');
     if (robot.HP < 1) {
+        robot.HP = 0;
         robotImg.src = '/assets/other/robot-dead.png';
     } else {
         robotImg.src = '/assets/robots/robot-' + robot.name + '.png';
@@ -14,7 +15,7 @@ export function renderRobot(robot) {
     robotDiv.classList.add('robots');
 
     const hEl = document.createElement('h3');
-    hEl.textContent = 'HP';
+    hEl.textContent = robot.name;
 
     const pEl = document.createElement('p');
     pEl.textContent = robot.HP;
