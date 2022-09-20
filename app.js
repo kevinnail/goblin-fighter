@@ -18,7 +18,7 @@ let message = '';
 let robots = [
     { name: 'fox', HP: 8 },
     { name: 'snake', HP: 5 },
-    { name: 'elephant', HP: 5 },
+    { name: 'elephant', HP: 0 },
 ];
 
 /* Events */

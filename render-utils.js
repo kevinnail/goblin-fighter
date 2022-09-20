@@ -4,7 +4,11 @@ export function renderRobot(robot) {
 
     const robotImg = document.createElement('img');
     robotImg.classList.add('robot-img');
-    robotImg.src = '/assets/robots/robot-' + robot.name + '.png';
+    if (robot.HP < 1) {
+        robotImg.src = '/assets/other/robot-dead.png';
+    } else {
+        robotImg.src = '/assets/robots/robot-' + robot.name + '.png';
+    }
 
     const robotDiv = document.createElement('div');
     robotDiv.classList.add('robots');
