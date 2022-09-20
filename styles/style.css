@@ -1,0 +1,16 @@
+body {
+    background: url('/assets/other/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    background-color: blue;
+    width: 60%;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 20px;
+    margin: auto;
+}
