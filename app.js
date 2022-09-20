@@ -5,6 +5,8 @@ import { getRandomItem } from './utils.js';
 const userHP = document.getElementById('user-HP');
 const userImg = document.getElementById('robot-me');
 const currentMsg = document.getElementById('current-msg');
+const scoreSpan = document.getElementById('score');
+const score = 0;
 /* State */
 let playerObj = {
     HP: 10,
@@ -27,7 +29,13 @@ function displayUserHP() {
 function displayCurrentMsg() {
     currentMsg.innerHTML = message;
 }
+
+function displayScoreBoard() {}
+scoreSpan.innerHTML = score;
+//
+//
 // (don't forget to call any display functions you want to run on page load!)
 
 displayUserHP();
 displayCurrentMsg();
+displayScoreBoard();

@@ -144,3 +144,7 @@ h2 {
 #current-msg {
     height: 40px;
 }
+
+#score {
+    font-size: 1.5em;
+}
