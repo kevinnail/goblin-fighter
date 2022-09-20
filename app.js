@@ -18,7 +18,7 @@ let message = '';
 let robots = [
     { name: 'fox', HP: 8 },
     { name: 'snake', HP: 5 },
-    { name: 'bird', HP: 5 },
+    { name: 'elephant', HP: 5 },
 ];
 
 /* Events */
@@ -51,7 +51,9 @@ function displayRobots() {
         console.log(robot.name);
         robotEl.addEventListener('click', () => {
             // do attack/ damage stuff
+            alert(robot.name);
         });
+        robotSection.append(robotEl);
     }
     // displayRobots();
 }
