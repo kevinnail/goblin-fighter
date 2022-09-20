@@ -2,15 +2,45 @@ body {
     background: url('/assets/other/background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100vh;
 }
 
 h1 {
-    background-color: blue;
-    width: 60%;
-    color: white;
+    background-color: rgba(0, 0, 255, 0.9);
+    width: 40%;
+    color: rgb(171, 86, 86);
     text-align: center;
-    padding: 20px;
+    padding: 15px 0px;
     border: 2px solid black;
     border-radius: 20px;
     margin: auto;
+    text-shadow: 2px 2px 20px rgb(129, 129, 129);
+}
+h3 {
+    background-color: rgba(0, 0, 255, 0.9);
+    width: 60%;
+    color: rgba(255, 0, 0, 0.557);
+    text-align: center;
+    padding: 5px 0px;
+    border: 2px solid black;
+    border-radius: 20px;
+    margin: auto;
+    text-shadow: 2px 2px 10px rgb(122, 122, 122);
+}
+
+header {
+    background: url(/assets/other/robot-dead.png);
+    background-repeat: repeat-x;
+    background-size: contain;
+}
+main {
+    display: grid;
+    grid-template-columns: 1fr 75px 1fr;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+main section,
+div {
+    border: 2px solid rgba(0, 0, 255, 0.9);
 }
