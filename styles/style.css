@@ -129,6 +129,12 @@ h2 {
     margin: auto;
 }
 
+.robot-img {
+    width: 150px;
+    display: inline;
+    margin: auto;
+}
+
 .robot-display {
     background-color: rgba(0, 0, 255, 0.7);
     height: 200px;
