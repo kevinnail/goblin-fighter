@@ -13,7 +13,7 @@ const robotSection = document.getElementById('robot-section');
 
 /* State */
 let playerObj = {
-    HP: 10,
+    HP: 50,
 };
 let message = '';
 let robots = [
@@ -65,37 +65,54 @@ function displayRobots() {
         robotEl.addEventListener('click', () => {
             // switch statement? need to differentiate between robots' varying HP
 
-            if (robot.HP > 1) {
-                hpDamage = playerObj.HP;
-                playerObj.HP -= getRandomNumber(3);
+            // if (robot.HP > 0) {
+            // hpDamage = playerObj.HP;
+            // playerObj.HP -= getRandomNumber(3);
 
-                message =
-                    'Robot inflicts ' +
-                    '<span style="font-size:1.5em;">' +
-                    (hpDamage - playerObj.HP + '</span>' + ' HP, ');
-            } else {
-                message = `You have killed the ${robot.name}!!!`;
-            }
+            // message =
+            //     'Robot inflicts ' +
+            //     '<span style="font-size:1.5em;">' +
+            //     (hpDamage - playerObj.HP + '</span>' + ' HP, ');
+            // } else {
+            //     // message = `You have killed the ${robot.name}!!!`;
+            // }
 
-            if (playerObj.HP > 1) {
+            if (playerObj.HP > 0 && robot.HP > 0) {
                 hpDamage = robot.HP;
                 robot.HP -= getRandomNumber(5);
                 message +=
-                    'you inflict ' +
+                    'You inflict ' +
                     '<span style="font-size:1.5em;">' +
                     (hpDamage - robot.HP) +
                     '</span>' +
-                    ' HP';
+                    ' HP, ';
+
+                hpDamage = playerObj.HP;
+                playerObj.HP -= getRandomNumber(3);
+                message +=
+                    'Robot inflicts ' +
+                    '<span style="font-size:1.5em;">' +
+                    (hpDamage - playerObj.HP + '</span>' + ' HP ');
+                displayCurrentMsg();
+
+                if (robot.HP <= 0) {
+                    message = `You killed the ${robot.name}!!`;
+                    score++;
+                    displayScoreBoard();
+                    displayCurrentMsg();
+                }
             }
+
             displayRobots();
             displayUserHP();
-            displayCurrentMsg();
+            // displayCurrentMsg();
+            message = '';
+            // message = `You have killed the ${robot.name}!`;
         });
 
         if (robot.HP <= 0) {
             robot.HP = 0;
 
-            // message = `You have killed the ${robot.name}!`;
             displayCurrentMsg();
         }
 
