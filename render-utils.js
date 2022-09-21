@@ -9,7 +9,7 @@ export function renderRobot(robot) {
         robotImg.src = '/assets/other/robot-dead.png';
         robotDisplay.classList.add('dead');
     } else {
-        robotImg.src = '/assets/robots/robot-' + robot.name + '.png';
+        robotImg.src = '/assets/robots/robot-' + robot.type + '.png';
     }
 
     const robotDiv = document.createElement('div');

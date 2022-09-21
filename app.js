@@ -10,6 +10,8 @@ const currentMsg = document.getElementById('current-msg');
 const scoreSpan = document.getElementById('score');
 
 const robotSection = document.getElementById('robot-section');
+const addRobotForm = document.getElementById('add-robot-form');
+const removeDeadRobots = document.getElementById('remove-robot-button');
 
 /* State */
 let playerObj = {
@@ -17,9 +19,9 @@ let playerObj = {
 };
 let message = '';
 let robots = [
-    { name: 'fox', HP: 10 },
-    { name: 'snake', HP: 5 },
-    { name: 'elephant', HP: 10 },
+    { name: 'fox', HP: 10, type: 'fox' },
+    { name: 'snake', HP: 5, type: 'snake' },
+    { name: 'elephant', HP: 10, type: 'elephant' },
 ];
 
 let score = 0;
@@ -29,10 +31,31 @@ let hpDamage = 0;
 
 // let robotHP = {};
 
-// const whichRobot = ['bird', 'snake', 'fox', 'cheetah', 'elephant'];
-// const robotNumber = [0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 3, 3, 4];
+const whichRobot = ['bird', 'snake', 'fox', 'cheetah', 'elephant'];
+const robotOptions = [0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 3, 3, 4];
 
 /* Events */
+
+addRobotForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(addRobotForm);
+    const robot = {
+        name: formData.get('name'),
+        HP: 10,
+    };
+
+    const robotNumber = getRandomNumber(4);
+    const typeOfRobot = whichRobot[robotNumber];
+
+    robot.type = typeOfRobot;
+
+    robots.push(robot);
+    addRobotForm.reset();
+
+    message = robot.name + ' the ' + robot.type + ' was added to the fight!';
+    displayRobots();
+    displayCurrentMsg();
+});
 
 /* Display Functions */
 function displayUserHP() {
@@ -65,24 +88,12 @@ function displayRobots() {
         robotEl.addEventListener('click', () => {
             // switch statement? need to differentiate between robots' varying HP
 
-            // if (robot.HP > 0) {
-            // hpDamage = playerObj.HP;
-            // playerObj.HP -= getRandomNumber(3);
-
-            // message =
-            //     'Robot inflicts ' +
-            //     '<span style="font-size:1.5em;">' +
-            //     (hpDamage - playerObj.HP + '</span>' + ' HP, ');
-            // } else {
-            //     // message = `You have killed the ${robot.name}!!!`;
-            // }
-
             if (playerObj.HP > 0 && robot.HP > 0) {
                 hpDamage = robot.HP;
                 robot.HP -= getRandomNumber(5);
                 message +=
                     'You inflict ' +
-                    '<span style="font-size:1.5em;">' +
+                    '<span class="message-span">' +
                     (hpDamage - robot.HP) +
                     '</span>' +
                     ' HP, ';
@@ -91,16 +102,22 @@ function displayRobots() {
                 playerObj.HP -= getRandomNumber(3);
                 message +=
                     'Robot inflicts ' +
-                    '<span style="font-size:1.5em;">' +
+                    '<span class="message-span">' +
                     (hpDamage - playerObj.HP + '</span>' + ' HP ');
                 displayCurrentMsg();
 
                 if (robot.HP <= 0) {
-                    message = `You killed the ${robot.name}!!`;
+                    if (robot.name == robot.type) {
+                        message = `You killed the <span class="message-span">  ${robot.type} </span>!!`;
+                    } else {
+                        message = `You killed <span class="message-span">${robot.name} the ${robot.type} </span>!!`;
+                    }
                     score++;
                     displayScoreBoard();
                     displayCurrentMsg();
                 }
+            } else {
+                message = `That <span style=font-size:1.5em;text-transform:capitalize;"> ${robot.type} </span> is dead, attack a different one!`;
             }
 
             displayRobots();
