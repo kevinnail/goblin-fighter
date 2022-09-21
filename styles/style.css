@@ -33,8 +33,6 @@ h3 {
 }
 
 header {
-    /* background-color: black; */
-    /* background: url(/assets/other/robot-dead.png); */
     background: none;
     background-repeat: repeat-x;
     background-size: contain;
@@ -119,10 +117,6 @@ h2 {
 #robot-section {
     display: grid;
     grid-template-rows: auto;
-}
-
-#robot-section div {
-    /* padding: 10px; */
 }
 
 #robot-section img {

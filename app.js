@@ -31,12 +31,6 @@ let hpDamage2 = 0;
 const whichRobot = ['bird', 'snake', 'fox', 'cheetah', 'elephant'];
 const robotOptions = [0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 3, 3, 4];
 
-// const bird = { type: 'bird', HP: 5 };
-// const snake = { type: 'snake', HP: 5 };
-// const fox = { type: 'fox', HP: 10 };
-// const cheetah = { type: 'cheetah', HP: 12 };
-// const elephant = { type: 'elephant', HP: 15 };
-
 /* Events */
 
 addRobotForm.addEventListener('submit', (e) => {
@@ -82,8 +76,6 @@ addRobotForm.addEventListener('submit', (e) => {
 removeDeadRobots.addEventListener('click', () => {
     const liveRobots = [];
     for (const robot of robots) {
-        // > if the robot is not dead, push
-        // them into the liveRobots array
         if (robot.HP > 1) {
             liveRobots.push(robot);
         }
@@ -102,7 +94,6 @@ function displayUserHP() {
         playerObj.HP = 0;
         userImg.src = '/assets/other/dead-hero.png';
         userHpDiv.classList.add('dead');
-        // message = 'You died! You have lost to the evil animal robots!';
     }
 }
 
@@ -121,31 +112,14 @@ function displayRobots() {
         const robotEl = renderRobot(robot);
 
         robotEl.addEventListener('click', () => {
-            // switch statement? need to differentiate between robots' varying HP
-
             if (robot.HP <= 0) {
                 message = 'Already dead, fight another robot!';
             } else if (playerObj.HP > 0 && robot.HP > 0) {
                 hpDamage = robot.HP;
                 robot.HP -= getRandomNumber(5);
-                // message +=
-                //     'You inflict ' +
-                //     '<span class="message-span">' +
-                //     (hpDamage - robot.HP) +
-                //     '</span>' +
-                //     ' HP, ';
-                // console.log('robot: ' + robot.HP + ' and was hit with ' + (robot.HP - hpDamage));
 
                 hpDamage2 = playerObj.HP;
                 playerObj.HP -= getRandomNumber(3);
-                // message +=
-                //     'Robot inflicts ' +
-                //     '<span class="message-span">' +
-                //     (hpDamage - playerObj.HP + '</span>' + ' HP ');
-                // displayCurrentMsg();
-                // console.log(
-                //     'player: ' + playerObj.HP + ' and was hit with ' + (playerObj.HP - hpDamage2)
-                // );
 
                 if (playerObj.HP > 0 && robot.HP > 0) {
                     message +=
@@ -158,7 +132,6 @@ function displayRobots() {
                         'Robot inflicts ' +
                         '<span class="message-span">' +
                         (hpDamage2 - playerObj.HP + '</span>' + ' HP ');
-                    // displayCurrentMsg();
                 } else if (robot.HP <= 0 && playerObj.HP > 0) {
                     if (robot.name === robot.type) {
                         message = `You killed the <span class="message-span">  ${robot.type} </span>!!`;
@@ -167,13 +140,10 @@ function displayRobots() {
                     }
                     score++;
                     displayScoreBoard();
-                    // displayCurrentMsg();
                 } else if (robot.HP <= 0 && playerObj.HP <= 0) {
                     message = 'You both have died! Game over';
-                    // displayCurrentMsg;
                 } else if (robot.HP > 0 && playerObj.HP <= 0) {
                     message = 'You have died and lost to the evil animal robots. Game over';
-                    // displayCurrentMsg();
                 }
 
                 displayCurrentMsg();
@@ -181,9 +151,7 @@ function displayRobots() {
 
             displayRobots();
             displayUserHP();
-            // displayCurrentMsg();
             message = '';
-            // message = `You have killed the ${robot.name}!`;
         });
 
         if (robot.HP <= 0) {
