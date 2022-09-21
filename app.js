@@ -37,6 +37,7 @@ function displayUserHP() {
     if (playerObj.HP > 0) {
         userImg.src = '/assets/robots/robot-me.png';
     } else {
+        playerObj.HP = 0;
         userImg.src = '/assets/other/dead-hero.png';
         message = 'You died! You have lost to the evil animal robots!';
     }
@@ -56,20 +57,35 @@ function displayRobots() {
     for (const robot of robots) {
         const robotEl = renderRobot(robot);
         robotEl.addEventListener('click', () => {
-            if (robot.HP <= 0) {
-                return;
-            }
             // do attack/ damage stuff
-
-            robot.HP -= getRandomNumber(3);
-            playerObj.HP -= getRandomNumber(3);
-
+            // if (robot.HP < 1) {
+            //     robots.pop(robot);
+            // }
             // switch statement? need to differentiate between robots' varying HP
 
+            if (robot.HP > 1) {
+                playerObj.HP -= getRandomNumber(3);
+            }
+            if (playerObj.HP > 1) {
+                robot.HP -= getRandomNumber(5);
+            }
             displayRobots();
             displayUserHP();
             displayCurrentMsg();
         });
+
+        if (robot.HP <= 0) {
+            robot.HP = 0;
+
+            message = `You have killed the ${robot.name}!`;
+            displayCurrentMsg();
+            // robots.pop(robot);
+        }
+
+        if (playerObj.HP <= 0) {
+            playerObj.HP = 0;
+            displayUserHP();
+        }
         robotSection.append(robotEl);
     }
 }
