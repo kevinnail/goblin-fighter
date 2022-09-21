@@ -28,8 +28,23 @@ let score = 0;
 let hpDamage = 0;
 let hpDamage2 = 0;
 
-const whichRobot = ['bird', 'snake', 'fox', 'cheetah', 'elephant'];
-const robotOptions = [0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 3, 3, 4];
+const whichRobot = [
+    'bird',
+    'bird',
+    'bird',
+    'bird',
+    'bird',
+    'snake',
+    'snake',
+    'snake',
+    'snake',
+    'fox',
+    'fox',
+    'fox',
+    'cheetah',
+    'cheetah',
+    'elephant',
+];
 
 /* Events */
 
@@ -40,8 +55,7 @@ addRobotForm.addEventListener('submit', (e) => {
         name: formData.get('name'),
     };
 
-    const robotNumber = getRandomNumber(4);
-    const typeOfRobot = whichRobot[robotNumber];
+    const typeOfRobot = getRandomItem(whichRobot);
 
     robot.type = typeOfRobot;
 
