@@ -7,6 +7,7 @@ export function renderRobot(robot) {
     if (robot.HP < 1) {
         robot.HP = 0;
         robotImg.src = '/assets/other/robot-dead.png';
+        robotDisplay.classList.add('dead');
     } else {
         robotImg.src = '/assets/robots/robot-' + robot.name + '.png';
     }

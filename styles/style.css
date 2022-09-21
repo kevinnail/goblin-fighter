@@ -73,7 +73,7 @@ main > div {
     color: white;
 }
 
-#user-HP-div {
+.user-HP-div {
     padding: 10px;
     background-color: rgba(0, 0, 255, 0.7);
 }
@@ -149,9 +149,14 @@ h2 {
 }
 
 #current-msg {
-    height: 40px;
+    justify-content: center;
+    height: 50px;
 }
 
 #score {
     font-size: 1.5em;
+}
+
+.dead {
+    background-color: rgba(255, 0, 0, 0.557);
 }

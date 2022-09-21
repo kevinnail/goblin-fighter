@@ -4,10 +4,11 @@ import { renderRobot } from './render-utils.js';
 
 /* Get DOM Elements */
 const userHP = document.getElementById('user-HP');
+const userHpDiv = document.getElementById('user-HP-div');
 const userImg = document.getElementById('robot-me');
 const currentMsg = document.getElementById('current-msg');
 const scoreSpan = document.getElementById('score');
-const score = 0;
+
 const robotSection = document.getElementById('robot-section');
 
 /* State */
@@ -20,6 +21,9 @@ let robots = [
     { name: 'snake', HP: 5 },
     { name: 'elephant', HP: 10 },
 ];
+
+let score = 0;
+let hpDamage = 0;
 
 // const gameState = 'start';
 
@@ -39,6 +43,7 @@ function displayUserHP() {
     } else {
         playerObj.HP = 0;
         userImg.src = '/assets/other/dead-hero.png';
+        userHpDiv.classList.add('dead');
         message = 'You died! You have lost to the evil animal robots!';
     }
 }
@@ -56,18 +61,31 @@ function displayRobots() {
 
     for (const robot of robots) {
         const robotEl = renderRobot(robot);
+
         robotEl.addEventListener('click', () => {
-            // do attack/ damage stuff
-            // if (robot.HP < 1) {
-            //     robots.pop(robot);
-            // }
             // switch statement? need to differentiate between robots' varying HP
 
             if (robot.HP > 1) {
+                hpDamage = playerObj.HP;
                 playerObj.HP -= getRandomNumber(3);
+
+                message =
+                    'Robot inflicts ' +
+                    '<span style="font-size:1.5em;">' +
+                    (hpDamage - playerObj.HP + '</span>' + ' HP, ');
+            } else {
+                message = `You have killed the ${robot.name}!!!`;
             }
+
             if (playerObj.HP > 1) {
+                hpDamage = robot.HP;
                 robot.HP -= getRandomNumber(5);
+                message +=
+                    'you inflict ' +
+                    '<span style="font-size:1.5em;">' +
+                    (hpDamage - robot.HP) +
+                    '</span>' +
+                    ' HP';
             }
             displayRobots();
             displayUserHP();
@@ -77,9 +95,8 @@ function displayRobots() {
         if (robot.HP <= 0) {
             robot.HP = 0;
 
-            message = `You have killed the ${robot.name}!`;
+            // message = `You have killed the ${robot.name}!`;
             displayCurrentMsg();
-            // robots.pop(robot);
         }
 
         if (playerObj.HP <= 0) {
@@ -88,6 +105,7 @@ function displayRobots() {
         }
         robotSection.append(robotEl);
     }
+    displayScoreBoard();
 }
 
 //
