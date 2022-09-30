@@ -15,7 +15,7 @@ const removeDeadRobots = document.getElementById('remove-robot-button');
 
 /* State */
 let playerObj = {
-    HP: 1,
+    HP: 50,
 };
 let message = '';
 
