@@ -233,6 +233,7 @@ function resetGame() {
     }
     displayScoreBoard();
     score = 0;
+    score1 = 0;
 }
 
 function restartGameRobots() {
