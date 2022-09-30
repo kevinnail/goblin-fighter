@@ -8,7 +8,7 @@ const userHpDiv = document.getElementById('user-HP-div');
 const userImg = document.getElementById('robot-me');
 const currentMsg = document.getElementById('current-msg');
 const scoreSpan = document.getElementById('score');
-
+const highScoreSpan = document.getElementById('high-score-span');
 const robotSection = document.getElementById('robot-section');
 const addRobotForm = document.getElementById('add-robot-form');
 const removeDeadRobots = document.getElementById('remove-robot-button');
@@ -21,10 +21,13 @@ let message = '';
 let robots = [
     { name: 'fox', HP: 10, type: 'fox' },
     { name: 'snake', HP: 5, type: 'snake' },
-    { name: 'elephant', HP: 10, type: 'elephant' },
+    { name: 'bird', HP: 10, type: 'bird' },
 ];
 
+let highScore = 0;
 let score = 0;
+let score1 = 0;
+// let highScore = 0;
 let hpDamage = 0;
 let hpDamage2 = 0;
 
@@ -117,6 +120,13 @@ function displayCurrentMsg() {
 
 function displayScoreBoard() {
     scoreSpan.innerHTML = score;
+    const x = score - score1;
+    if (x === 5) {
+        alert('5 robots killed!  5HP added');
+        playerObj.HP += 5;
+        score1 += 5;
+    }
+    highScoreSpan.textContent = highScore;
 }
 
 function displayRobots() {
@@ -149,15 +159,61 @@ function displayRobots() {
                 } else if (robot.HP <= 0 && playerObj.HP > 0) {
                     if (robot.name === robot.type) {
                         message = `You killed the <span class="message-span">  ${robot.type} </span>!!`;
+                        if (robot.type === 'elephant') {
+                            alert('Elephant killed, gain 3 HP');
+                            playerObj.HP += 3;
+                        }
                     } else {
                         message = `You killed <span class="message-span">${robot.name} the ${robot.type} </span>!!`;
+                        if (robot.type === 'elephant') {
+                            alert('Elephant killed, gain 3 HP');
+                            playerObj.HP += 3;
+                        }
                     }
                     score++;
                     displayScoreBoard();
                 } else if (robot.HP <= 0 && playerObj.HP <= 0) {
                     message = 'You both have died! Game over';
+                    if (
+                        confirm(
+                            'YOU HAVE BOTH DIED GAME OVER YOUR SCORE IS: ' +
+                                score +
+                                ' ROBOTS KILLED. RESTART GAME?'
+                        )
+                    ) {
+                        // robots = [];
+                        // playerObj.HP = 50;
+                        // displayUserHP();
+                        // restartGameRobots();
+                        // displayRobots();
+                        // if (score > highScore) {
+                        //     highScore = score;
+                        // }
+                        // displayScoreBoard();
+                        // score = 0;
+                        resetGame();
+                    }
                 } else if (robot.HP > 0 && playerObj.HP <= 0) {
                     message = 'You have died and lost to the evil animal robots. Game over';
+                    if (
+                        confirm(
+                            'YOU HAVE DIED GAME OVER YOUR SCORE IS: ' +
+                                score +
+                                ' ROBOTS KILLED. RESTART GAME?'
+                        )
+                    ) {
+                        // robots = [];
+                        // playerObj.HP = 50;
+                        // displayUserHP();
+                        // restartGameRobots();
+                        // displayRobots();
+                        // if (score > highScore) {
+                        //     highScore = score;
+                        // }
+                        // displayScoreBoard();
+                        // score = 0;
+                        resetGame();
+                    }
                 }
 
                 displayCurrentMsg();
@@ -180,6 +236,7 @@ function displayRobots() {
         }
         robotSection.append(robotEl);
     }
+
     displayScoreBoard();
 }
 
@@ -191,3 +248,85 @@ displayUserHP();
 displayCurrentMsg();
 displayScoreBoard();
 displayRobots();
+
+function newRobotNewGame() {
+    // let robotType = getRandomItem(whichRobot);
+    // console.log(robot.type);
+    // robots.type = robotType;
+    // robot.type = typeOfRobot;
+    // switch (robot.type) {
+    //     case 'bird':
+    //         robot.HP = 5;
+    //         break;
+    //     case 'snake':
+    //         robot.HP = 5;
+    //         break;
+    //     case 'fox':
+    //         robot.HP = 10;
+    //         break;
+    //     case 'cheetah':
+    //         robot.HP = 12;
+    //         break;
+    //     case 'elephant':
+    //         robot.HP = 15;
+    //         break;
+    // }
+    // for (let robot of robots) {
+    //     console.log('robots length: ' + robots.length);
+    //     for (let i = 0; i < robots.length; i++) {
+    //         robots.pop();
+    //     }
+    //     for (let i = 0; i < 2; i++) {
+    //         robot = getRandomItem(whichRobot);
+    //         switch (robot.type) {
+    //             case 'bird':
+    //                 robot.HP = 5;
+    //                 break;
+    //             case 'snake':
+    //                 robot.HP = 5;
+    //                 break;
+    //             case 'fox':
+    //                 robot.HP = 10;
+    //                 break;
+    //             case 'cheetah':
+    //                 robot.HP = 12;
+    //                 break;
+    //             case 'elephant':
+    //                 robot.HP = 15;
+    //                 break;
+    //         }
+    //         console.log(robot.type);
+    //         robots.push(robot);
+    //         console.log('robot length ' + robots.length);
+    //     }
+    // }
+    // // displayRobots();
+    // robots = [
+    //     { name: 'fox', HP: 10, type: 'fox' },
+    //     { name: 'snake', HP: 5, type: 'snake' },
+    //     { name: 'bird', HP: 10, type: 'bird' },
+    // ];
+    // return robots;
+}
+
+function resetGame() {
+    playerObj.HP = 50;
+    displayUserHP();
+    restartGameRobots();
+    displayRobots();
+    if (score > highScore) {
+        highScore = score;
+    }
+    displayScoreBoard();
+    score = 0;
+}
+
+function restartGameRobots() {
+    robots = [
+        { name: 'fox', HP: 10, type: 'fox' },
+        { name: 'snake', HP: 5, type: 'snake' },
+        { name: 'bird', HP: 10, type: 'bird' },
+    ];
+
+    displayRobots();
+}

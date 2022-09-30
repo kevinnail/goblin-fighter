@@ -13,10 +13,10 @@ body {
 }
 
 header {
-    position: sticky;
+    /* position: sticky; */
     top: 0;
     padding: 15px;
-    height: 190px;
+    height: 150px;
 
     /* display: flex;
     align-items: center;
