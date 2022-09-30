@@ -1,0 +1,30 @@
+event listeners:
+
+1/2) huntMushroomsButton.event == huntRobotsButton.event
+	generates random # = HP x 2 for player and robot(s)
+	message created /displayed
+addFriendForm.event == addRobotForm.event
+	add robot object w/ HP push onto array of robots
+	message created /displayed
+sayGoodbyeBtn.event == removeDeadRobotsBtn.event
+	push robot(s) off of array and redisplay
+
+
+
+
+
+
+
+functions:
+
+displayMessage()  == displayMessage()
+	html generated, adapt headers/ text to display game message
+displayMushrooms() == display HP damages for user and robots
+	create/ update user + robot(s) HP's
+	html generated corresponding to HP +/-, fatality
+displayFriends()	== displayRobots()
+	loops through robots, pops dead robots off array, subracts/ adds HP
+	html generated based on robot array, add event listener to each robot
+	display message/user & robot(s) HP
+	display robots
+	html displayed

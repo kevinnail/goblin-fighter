@@ -1,0 +1,163 @@
+body {
+    background-color: black;
+    background: url('/assets/other/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 85%;
+    margin: auto;
+    background-repeat: repeat-y;
+}
+
+h1 {
+    background-color: rgba(0, 0, 255, 0.9);
+    width: 40%;
+    color: rgb(171, 86, 86);
+    text-align: center;
+    padding: 15px 20px;
+    border: 2px solid black;
+    border-radius: 20px;
+    margin: auto;
+    text-shadow: 2px 2px 20px rgb(129, 129, 129);
+}
+h3 {
+    background-color: rgba(0, 0, 255, 0.9);
+    width: 60%;
+    color: rgba(255, 0, 0, 0.557);
+    text-align: center;
+    padding: 5px 0px;
+    border: 2px solid black;
+    border-radius: 20px;
+    margin: auto;
+    text-shadow: 2px 2px 10px rgb(122, 122, 122);
+    min-width: 200px;
+}
+
+header {
+    background: none;
+    background-repeat: repeat-x;
+    background-size: contain;
+    border: 2px solid rgba(0, 0, 255, 1);
+}
+main {
+    display: grid;
+    grid-template-columns: 1fr 75px 1fr;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+main section,
+main > div {
+    border: 2px solid rgba(0, 0, 255, 1);
+}
+
+#user-display,
+.robot-display {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    background: none;
+}
+#user-display img {
+    width: 200px;
+    margin: auto;
+}
+
+#user-display p,
+#user-display span {
+    text-align: center;
+    font-size: 2em;
+    color: white;
+}
+
+.user-HP-div {
+    padding: 10px;
+    background-color: rgba(0, 0, 255, 0.7);
+}
+
+h2 {
+    background-color: rgba(0, 0, 255, 0.9);
+    width: 90%;
+    color: rgba(255, 0, 0, 0.557);
+    text-align: center;
+    padding: 5px 0px;
+    border: 2px solid black;
+    border-radius: 20px;
+    margin: auto;
+    text-shadow: 2px 2px 10px rgb(122, 122, 122);
+}
+
+#score-board {
+    margin: 40px auto 40px auto;
+}
+#add-robot-form {
+    padding: 20px;
+    margin-left: 10%;
+}
+#add-robot-button {
+    font-size: 1.2em;
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+#remove-robot-button {
+    font-size: 1.2em;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin-left: 30%;
+}
+#robot-input {
+    height: 40px;
+    font-size: 1.2em;
+    padding: 5px 0px 5px 5px;
+    margin: 0px 30px;
+}
+
+#robot-section {
+    display: grid;
+    grid-template-rows: auto;
+}
+
+#robot-section img {
+    width: 150px;
+    display: inline;
+    margin: auto;
+}
+
+.robot-img {
+    width: 150px;
+    display: inline;
+    margin: auto;
+}
+
+.robot-display {
+    background-color: rgba(0, 0, 255, 0.7);
+    height: 200px;
+    padding: 10px;
+}
+
+.robots {
+    text-align: center;
+    font-size: 2em;
+    color: white;
+}
+
+#current-msg {
+    justify-content: center;
+    height: 50px;
+}
+
+#score {
+    font-size: 1.5em;
+}
+
+.dead {
+    background-color: rgba(255, 0, 0, 0.557);
+}
+
+.message-span {
+    font-size: 1.5em;
+    text-transform: capitalize;
+}
